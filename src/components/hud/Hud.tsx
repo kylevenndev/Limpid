@@ -2,27 +2,34 @@ import SceneBackground from '../scene/SceneBackground'
 import SidePanel from './SidePanel'
 import ClarityMeter from './ClarityMeter'
 import Health from './Health'
-import DialoguePanel, { type DialogueChoice } from './DialoguePanel'
+import DialoguePanel from './DialoguePanel'
+import type { DialogueChoice } from '../../types/dialogue'
+import { useHealth } from '../../hooks/useHealth'
 import './Hud.css'
 
 const choices: DialogueChoice[] = [
   { text: 'Wind it slowly, and see what it remembers.' },
-  { text: 'Recall the day this watch stopped.', meta: '75% (Past)' },
+  { text: 'Recall the day this watch stopped.',
+    meta: '(Dice 15)',
+    difficulty: 15,
+  },
   {
     text: 'Set the hour to now.',
-    meta: 'Requires Present Tier 2',
+    meta: 'Not enough Clarity',
     locked: true,
   },
 ]
 
 function Hud() {
+  const health = useHealth({ current: 3, max: 3 })
+
   return (
     <div className="hud">
       <SceneBackground />
       <div className="hud-overlay">
         <SidePanel />
         <ClarityMeter label="Clarity" value={44} />
-        <Health current={3} max={3} />
+        <Health current={health.current} max={health.max} />
         <DialoguePanel
           title="Faded Pocket Watch"
           narrative={[
@@ -30,6 +37,7 @@ function Hud() {
             'You could set it right. Or leave it broken, the way you found it.',
           ]}
           choices={choices}
+          takeDamage={health.takeDamage}
         />
       </div>
     </div>

@@ -1,19 +1,15 @@
+import type { DialogueChoice } from '../../types/dialogue'
+import { resolveDifficultyCheck } from '../../utils/dice'
 import './DialoguePanel.css'
-
-export interface DialogueChoice {
-  text: string
-  meta?: string
-  locked?: boolean
-  onSelect?: () => void
-}
 
 interface DialoguePanelProps {
   title: string
   narrative: string[]
   choices: DialogueChoice[]
+  takeDamage: () => void
 }
 
-function DialoguePanel({ title, narrative, choices }: DialoguePanelProps) {
+function DialoguePanel({ title, narrative, choices, takeDamage }: DialoguePanelProps) {
   return (
     <div className="hud-panel">
       <div className="hud-panel__title">{title}</div>
@@ -29,7 +25,14 @@ function DialoguePanel({ title, narrative, choices }: DialoguePanelProps) {
             type="button"
             key={i}
             className={`hud-panel__choice${choice.locked ? ' hud-panel__choice--locked' : ''}`}
-            onClick={choice.onSelect}
+            onClick={() => {
+              if (choice.difficulty === undefined) return
+              const result = resolveDifficultyCheck(choice.difficulty)
+              if (!result.success) {
+                takeDamage()
+              }
+              console.log(result)
+            }}
             disabled={choice.locked}
           >
             <span className="hud-panel__arrow">→</span>
