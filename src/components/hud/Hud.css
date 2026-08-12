@@ -1,0 +1,36 @@
+.hud {
+  --hud-accent: #c17a4e;
+  --hud-accent-strong: #a8563c;
+  --hud-ink: #0b0a09;
+  --hud-cream: #edeae3;
+  --hud-panel-bg: rgba(12, 10, 9, 0.74);
+  --hud-border: rgba(237, 234, 227, 0.16);
+  --hud-font-heading:
+    'Iowan Old Style', 'Palatino Linotype', Georgia, 'Times New Roman', serif;
+  --hud-rail-width: 64px;
+  --hud-inset-left: 84px;
+
+  /* position: relative;
+  width: min(1920px, 96vw); */
+  aspect-ratio: 16 / 9;
+  max-height: 92svh;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 6px solid color-mix(in srgb, var(--hud-cream) 82%, #000);
+  box-shadow:
+    0 30px 60px -20px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(0, 0, 0, 0.4);
+  color: var(--hud-cream);
+  font-family: var(--hud-font-heading);
+}
+
+.hud-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hud-overlay > * {
+  pointer-events: auto;
+}

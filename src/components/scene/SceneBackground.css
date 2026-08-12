@@ -1,0 +1,13 @@
+.hud-scene {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-color: #0c0b0a;
+  background-size:
+    cover,
+    cover;
+  background-position:
+    center,
+    center;
+  background-repeat: no-repeat, no-repeat;
+}

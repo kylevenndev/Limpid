@@ -1,0 +1,71 @@
+.hud-rail {
+  position: absolute;
+  inset-block: 0;
+  left: 0;
+  width: var(--hud-rail-width);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 56px;
+  background: linear-gradient(
+    180deg,
+    rgba(20, 16, 13, 0.92),
+    rgba(10, 8, 7, 0.96)
+  );
+  border-right: 1px solid var(--hud-border);
+  z-index: 2;
+}
+
+.hud-rail__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: color-mix(in srgb, var(--hud-cream) 70%, transparent);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.hud-rail__item svg {
+  width: 100%;
+  height: 100%;
+}
+
+.hud-rail__item:hover,
+.hud-rail__item:focus-visible {
+  color: var(--hud-accent);
+  outline: none;
+}
+
+.hud-rail__label {
+  position: absolute;
+  left: calc(100% + 10px);
+  top: 50%;
+  transform: translate(-6px, -50%);
+  white-space: nowrap;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--hud-cream);
+  background: rgba(10, 8, 7, 0.92);
+  border: 1px solid var(--hud-border);
+  padding: 4px 8px;
+  border-radius: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
+}
+
+.hud-rail__item:hover .hud-rail__label,
+.hud-rail__item:focus-visible .hud-rail__label {
+  opacity: 1;
+  transform: translate(0, -50%);
+}

@@ -1,0 +1,31 @@
+.hud-health {
+  position: absolute;
+  bottom: 22px;
+  left: var(--hud-inset-left);
+  z-index: 2;
+}
+
+.hud-health__label {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--hud-cream) 65%, transparent);
+  margin-bottom: 6px;
+}
+
+.hud-health__blocks {
+  display: flex;
+  gap: 4px;
+}
+
+.hud-health__block {
+  width: 28px;
+  height: 14px;
+  border-radius: 2px;
+  border: 1.5px solid var(--hud-accent-strong);
+  background: transparent;
+}
+
+.hud-health__block--filled {
+  background: var(--hud-accent-strong);
+}
