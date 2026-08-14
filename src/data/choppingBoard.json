@@ -1,0 +1,30 @@
+{
+  "id": "chopping-board",
+  "startPassageId": "start",
+  "passages": {
+    "start": {
+      "id": "start",
+      "title": "Chopping Board",
+      "narrative": ["A worn wooden board, knife marks scarred deep into its surface."],
+      "choices": [
+        { "text": "Pick up the knife.", "next": "knife", "difficulty": 15 },
+        { "text": "Put the board back.", "next": "ending" },
+        { "text": "Leave.", "next": "ending" }
+      ]
+    },
+    "knife": {
+      "id": "knife",
+      "title": "Chopping Board",
+      "narrative": ["The knife is heavier than it looks. The blade catches the light."],
+      "choices": [
+        { "text": "Put it back down.", "next": "ending" }
+      ]
+    },
+    "ending": {
+      "id": "ending",
+      "title": "Chopping Board",
+      "narrative": ["You step away from the board."],
+      "choices": []
+    }
+  }
+}
