@@ -1,15 +1,16 @@
 import type { DialogueChoice } from '../../types/dialogue'
 import { resolveDifficultyCheck } from '../../utils/dice'
+import { usePlayer } from '../../PlayerContext'
 import './DialoguePanel.css'
 
 interface DialoguePanelProps {
   title: string
   narrative: string[]
   choices: DialogueChoice[]
-  takeDamage: () => void
 }
 
-function DialoguePanel({ title, narrative, choices, takeDamage }: DialoguePanelProps) {
+function DialoguePanel({ title, narrative, choices }: DialoguePanelProps) {
+  const { health } = usePlayer()
   return (
     <div className="hud-panel">
       <div className="hud-panel__title">{title}</div>
@@ -29,7 +30,7 @@ function DialoguePanel({ title, narrative, choices, takeDamage }: DialoguePanelP
               if (choice.difficulty === undefined) return
               const result = resolveDifficultyCheck(choice.difficulty)
               if (!result.success) {
-                takeDamage()
+                health.takeDamage()
               }
               console.log(result)
             }}

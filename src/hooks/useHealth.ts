@@ -2,8 +2,8 @@ import { useCallback, useState } from 'react'
 import type { HealthState } from '../types/health'
 import { applyDamage, applyHeal, isDead } from '../utils/health'
 
-export function useHealth(initial: HealthState) {
-  const [health, setHealth] = useState<HealthState>(initial)
+export function useHealth() {
+  const [health, setHealth] = useState<HealthState>({ current: 3, max: 3 })
 
   // WITHOUT useCallback,:
   // const takeDamage = (amount: number) => {

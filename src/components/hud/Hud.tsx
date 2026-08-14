@@ -4,7 +4,6 @@ import ClarityMeter from './ClarityMeter'
 import Health from './Health'
 import DialoguePanel from './DialoguePanel'
 import type { DialogueChoice } from '../../types/dialogue'
-import { useHealth } from '../../hooks/useHealth'
 import './Hud.css'
 
 const choices: DialogueChoice[] = [
@@ -21,15 +20,13 @@ const choices: DialogueChoice[] = [
 ]
 
 function Hud() {
-  const health = useHealth({ current: 3, max: 3 })
-
   return (
     <div className="hud">
       <SceneBackground />
       <div className="hud-overlay">
         <SidePanel />
         <ClarityMeter label="Clarity" value={44} />
-        <Health current={health.current} max={health.max} />
+        <Health />
         <DialoguePanel
           title="Faded Pocket Watch"
           narrative={[
@@ -37,7 +34,6 @@ function Hud() {
             'You could set it right. Or leave it broken, the way you found it.',
           ]}
           choices={choices}
-          takeDamage={health.takeDamage}
         />
       </div>
     </div>
