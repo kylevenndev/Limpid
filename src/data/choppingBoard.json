@@ -1,6 +1,8 @@
 {
   "id": "chopping-board",
+  "name": "Chopping Board",
   "startPassageId": "start",
+  "position": { "top": "65%", "left": "20%" },
   "passages": {
     "start": {
       "id": "start",
@@ -24,7 +26,7 @@
       "id": "ending",
       "title": "Chopping Board",
       "narrative": ["You step away from the board."],
-      "choices": []
+      "choices": [{ "text": "END" }]
     }
   }
 }

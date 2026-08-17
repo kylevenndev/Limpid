@@ -4,11 +4,8 @@ import ClarityMeter from './ClarityMeter'
 import Health from './Health'
 import DialoguePanel from './DialoguePanel'
 import { usePlayer } from '../../PlayerContext'
-import choppingBoardData from '../../data/choppingBoard.json'
-import type { Interactable } from '../../types/interactable'
+import { interactables } from '../../data/interactables'
 import './Hud.css'
-
-const choppingBoard = choppingBoardData as Interactable
 
 function Hud() {
   const { currentPassage, openInteractable } = usePlayer()
@@ -20,11 +17,18 @@ function Hud() {
         <SidePanel />
         <ClarityMeter label="Clarity" value={44} />
         <Health />
-        {!currentPassage && (
-          <button type="button" onClick={() => openInteractable(choppingBoard)}>
-            Interact with chopping board (test)
-          </button>
-        )}
+        {!currentPassage &&
+          interactables.map((interactable) => (
+            <button
+              key={interactable.id}
+              type="button"
+              className="hud-interactable"
+              style={{ top: interactable.position.top, left: interactable.position.left }}
+              onClick={() => openInteractable(interactable)}
+            >
+              {interactable.name}
+            </button>
+          ))}
         {currentPassage && <DialoguePanel passage={currentPassage} />}
       </div>
     </div>

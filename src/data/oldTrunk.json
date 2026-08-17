@@ -1,0 +1,32 @@
+{
+  "id": "old-trunk",
+  "name": "Old Trunk",
+  "startPassageId": "start",
+  "position": { "top": "55%", "left": "85%" },
+  "passages": {
+    "start": {
+      "id": "start",
+      "title": "Old Trunk",
+      "narrative": ["The latch is rusted shut. Something inside shifts when you nudge it."],
+      "choices": [
+        { "text": "Force the latch open.", "next": "open", "difficulty": 15 },
+        { "text": "Leave it locked.", "next": "ending" },
+        { "text": "Walk away.", "next": "ending" }
+      ]
+    },
+    "open": {
+      "id": "open",
+      "title": "Old Trunk",
+      "narrative": ["The lid gives way. Dust, cloth, and something metal underneath."],
+      "choices": [
+        { "text": "Close the trunk.", "next": "ending" }
+      ]
+    },
+    "ending": {
+      "id": "ending",
+      "title": "Old Trunk",
+      "narrative": ["You step away from the trunk."],
+      "choices": [{ "text": "END" }]
+    }
+  }
+}

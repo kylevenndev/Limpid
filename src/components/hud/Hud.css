@@ -10,8 +10,8 @@
   --hud-rail-width: 64px;
   --hud-inset-left: 84px;
 
-  /* position: relative;
-  width: min(1920px, 96vw); */
+  position: relative;
+  width: min(1920px, 96vw);
   aspect-ratio: 16 / 9;
   max-height: 92svh;
   border-radius: 20px;
@@ -33,4 +33,18 @@
 
 .hud-overlay > * {
   pointer-events: auto;
+}
+
+.hud-interactable {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1.5px solid var(--hud-accent);
+  background: var(--hud-panel-bg);
+  color: var(--hud-cream);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  cursor: pointer;
 }
