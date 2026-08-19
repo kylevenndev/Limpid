@@ -34,17 +34,3 @@
 .hud-overlay > * {
   pointer-events: auto;
 }
-
-.hud-interactable {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  padding: 8px 14px;
-  border-radius: 999px;
-  border: 1.5px solid var(--hud-accent);
-  background: var(--hud-panel-bg);
-  color: var(--hud-cream);
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  cursor: pointer;
-}

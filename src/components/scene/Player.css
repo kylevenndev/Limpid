@@ -1,0 +1,12 @@
+.scene-player {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--hud-accent);
+  border: 2px solid var(--hud-cream);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  pointer-events: none;
+}
