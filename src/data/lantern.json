@@ -9,9 +9,9 @@
       "title": "Broken Lantern",
       "narrative": ["The glass is shattered, but the wick still smells faintly of oil."],
       "choices": [
-        { "text": "Try to light it.", "next": "light", "difficulty": 15 },
-        { "text": "Leave it dark.", "next": "ending" },
-        { "text": "Walk away.", "next": "ending" }
+        { "id": "light-it", "text": "Try to light it.", "next": "light", "difficulty": 15 },
+        { "id": "leave-dark", "text": "Leave it dark.", "next": "ending" },
+        { "id": "walk-away", "text": "Walk away.", "next": "ending" }
       ]
     },
     "light": {
@@ -19,14 +19,14 @@
       "title": "Broken Lantern",
       "narrative": ["It catches for a second, then gutters out."],
       "choices": [
-        { "text": "Set it back down.", "next": "ending" }
+        { "id": "set-down", "text": "Set it back down.", "next": "ending" }
       ]
     },
     "ending": {
       "id": "ending",
       "title": "Broken Lantern",
       "narrative": ["You step away from the lantern."],
-      "choices": [{ "text": "END" }]
+      "choices": [{ "id": "end", "text": "END" }]
     }
   }
 }

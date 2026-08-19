@@ -9,9 +9,9 @@
       "title": "Water-Stained Journal",
       "narrative": ["The pages are swollen and stuck together. One entry is underlined twice."],
       "choices": [
-        { "text": "Pry the pages apart.", "next": "read", "difficulty": 15 },
-        { "text": "Set it back down.", "next": "ending" },
-        { "text": "Leave it.", "next": "ending" }
+        { "id": "pry-pages", "text": "Pry the pages apart.", "next": "read", "difficulty": 15 },
+        { "id": "set-down", "text": "Set it back down.", "next": "ending" },
+        { "id": "leave", "text": "Leave it.", "next": "ending" }
       ]
     },
     "read": {
@@ -19,14 +19,14 @@
       "title": "Water-Stained Journal",
       "narrative": ["The ink has bled, but a name is still legible."],
       "choices": [
-        { "text": "Close the journal.", "next": "ending" }
+        { "id": "close-journal", "text": "Close the journal.", "next": "ending" }
       ]
     },
     "ending": {
       "id": "ending",
       "title": "Water-Stained Journal",
       "narrative": ["You step away from the journal."],
-      "choices": [{ "text": "END" }]
+      "choices": [{ "id": "end", "text": "END" }]
     }
   }
 }

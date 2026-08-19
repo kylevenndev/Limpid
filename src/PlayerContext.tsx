@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useCallback, type ReactNode } from 'react'
 import { useHealth } from './hooks/useHealth'
 import { usePlayerPosition } from './hooks/usePlayerPosition'
+import { useVisitedChoices } from './hooks/useVisitedChoices'
 import type { Interactable } from './types/interactable'
 import type { DialogueChoice, DialoguePassage } from './types/dialogue'
 import type { Position } from './types/player'
@@ -12,6 +13,7 @@ interface PlayerContextType {
   currentPassage: DialoguePassage | null
   openInteractable: (interactable: Interactable) => void
   selectChoice: (choice: DialogueChoice) => void
+  isChoiceVisited: (passageId: string, choiceId: string) => boolean
 }
 
 const PlayerContext = createContext<PlayerContextType | null>(null)
@@ -19,6 +21,7 @@ const PlayerContext = createContext<PlayerContextType | null>(null)
 export function PlayerProvider({ children }: { children: ReactNode }) {
   const health = useHealth()
   const { position, moveTo } = usePlayerPosition()
+  const { markVisited, isVisited } = useVisitedChoices()
   const [activeInteractable, setActiveInteractable] = useState<Interactable | null>(null)
   const [currentPassageId, setCurrentPassageId] = useState<string | null>(null)
 
@@ -27,21 +30,41 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
     setCurrentPassageId(interactable.startPassageId)
   }, [])
 
-  const selectChoice = useCallback((choice: DialogueChoice) => {
-    if (choice.next === undefined) {
-      setActiveInteractable(null)
-      setCurrentPassageId(null)
-      return
-    }
-    setCurrentPassageId(choice.next)
-  }, [])
+  const selectChoice = useCallback(
+    (choice: DialogueChoice) => {
+      if (activeInteractable && currentPassageId) {
+        markVisited(`${activeInteractable.id}:${currentPassageId}:${choice.id}`)
+      }
+      if (choice.next === undefined) {
+        setActiveInteractable(null)
+        setCurrentPassageId(null)
+        return
+      }
+      setCurrentPassageId(choice.next)
+    },
+    [activeInteractable, currentPassageId, markVisited],
+  )
+
+  const isChoiceVisited = useCallback(
+    (passageId: string, choiceId: string) =>
+      activeInteractable ? isVisited(`${activeInteractable.id}:${passageId}:${choiceId}`) : false,
+    [activeInteractable, isVisited],
+  )
 
   const currentPassage =
     activeInteractable && currentPassageId ? activeInteractable.passages[currentPassageId] : null
 
   return (
     <PlayerContext.Provider
-      value={{ health, position, moveTo, currentPassage, openInteractable, selectChoice }}
+      value={{
+        health,
+        position,
+        moveTo,
+        currentPassage,
+        openInteractable,
+        selectChoice,
+        isChoiceVisited,
+      }}
     >
       {children}
     </PlayerContext.Provider>

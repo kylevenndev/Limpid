@@ -8,7 +8,7 @@ interface DialoguePanelProps {
 }
 
 function DialoguePanel({ passage }: DialoguePanelProps) {
-  const { health, selectChoice } = usePlayer()
+  const { health, selectChoice, isChoiceVisited } = usePlayer()
   return (
     <div className="hud-panel">
       <div className="hud-panel__title">{passage.title}</div>
@@ -20,11 +20,11 @@ function DialoguePanel({ passage }: DialoguePanelProps) {
       <div className="hud-panel__spacer" />
       {passage.choices.length > 0 && (
         <div className="hud-panel__choices">
-          {passage.choices.map((choice, i) => (
+          {passage.choices.map((choice) => (
             <button
               type="button"
-              key={i}
-              className={`hud-panel__choice${choice.locked ? ' hud-panel__choice--locked' : ''}`}
+              key={choice.id}
+              className={`hud-panel__choice${choice.locked ? ' hud-panel__choice--locked' : ''}${isChoiceVisited(passage.id, choice.id) ? ' hud-panel__choice--visited' : ''}`}
               onClick={() => {
                 if (choice.difficulty !== undefined) {
                   const result = resolveDifficultyCheck(choice.difficulty)

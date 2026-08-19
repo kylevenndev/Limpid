@@ -9,9 +9,9 @@
       "title": "Chopping Board",
       "narrative": ["A worn wooden board, knife marks scarred deep into its surface."],
       "choices": [
-        { "text": "Pick up the knife.", "next": "knife", "difficulty": 15 },
-        { "text": "Put the board back.", "next": "ending" },
-        { "text": "Leave.", "next": "ending" }
+        { "id": "pick-knife", "text": "Pick up the knife.", "next": "knife", "difficulty": 15 },
+        { "id": "put-back", "text": "Put the board back.", "next": "ending" },
+        { "id": "leave", "text": "Leave.", "next": "ending" }
       ]
     },
     "knife": {
@@ -19,14 +19,14 @@
       "title": "Chopping Board",
       "narrative": ["The knife is heavier than it looks. The blade catches the light."],
       "choices": [
-        { "text": "Put it back down.", "next": "ending" }
+        { "id": "put-down", "text": "Put it back down.", "next": "ending" }
       ]
     },
     "ending": {
       "id": "ending",
       "title": "Chopping Board",
       "narrative": ["You step away from the board."],
-      "choices": [{ "text": "END" }]
+      "choices": [{ "id": "end", "text": "END" }]
     }
   }
 }

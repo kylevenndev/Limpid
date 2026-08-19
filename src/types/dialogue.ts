@@ -1,4 +1,5 @@
 export interface DialogueChoice {
+  id: string
   text: string
   meta?: string
   locked?: boolean

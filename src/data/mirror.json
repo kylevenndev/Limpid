@@ -9,9 +9,9 @@
       "title": "Cracked Mirror",
       "narrative": ["The glass is fogged at the edges. Your reflection is a beat too slow."],
       "choices": [
-        { "text": "Wipe the fog away.", "next": "wipe", "difficulty": 15 },
-        { "text": "Look closer.", "next": "ending" },
-        { "text": "Step back.", "next": "ending" }
+        { "id": "wipe-fog", "text": "Wipe the fog away.", "next": "wipe", "difficulty": 15 },
+        { "id": "look-closer", "text": "Look closer.", "next": "ending" },
+        { "id": "step-back", "text": "Step back.", "next": "ending" }
       ]
     },
     "wipe": {
@@ -19,14 +19,14 @@
       "title": "Cracked Mirror",
       "narrative": ["For a moment, the reflection doesn't match your movement."],
       "choices": [
-        { "text": "Turn away.", "next": "ending" }
+        { "id": "turn-away", "text": "Turn away.", "next": "ending" }
       ]
     },
     "ending": {
       "id": "ending",
       "title": "Cracked Mirror",
       "narrative": ["You step away from the mirror."],
-      "choices": [{ "text": "END" }]
+      "choices": [{ "id": "end", "text": "END" }]
     }
   }
 }
