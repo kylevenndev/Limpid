@@ -1,13 +1,13 @@
 {
   "id": "journal",
   "name": "Water-Stained Journal",
-  "startPassageId": "start",
+  "startDialogueId": "start",
   "position": { "top": "72%", "left": "58%" },
-  "passages": {
+  "dialogue": {
     "start": {
       "id": "start",
       "title": "Water-Stained Journal",
-      "narrative": ["The pages are swollen and stuck together. One entry is underlined twice."],
+      "text": ["The pages are swollen and stuck together. One entry is underlined twice."],
       "choices": [
         { "id": "pry-pages", "text": "Pry the pages apart.", "next": "read", "difficulty": 15 },
         { "id": "set-down", "text": "Set it back down.", "next": "ending" },
@@ -17,7 +17,7 @@
     "read": {
       "id": "read",
       "title": "Water-Stained Journal",
-      "narrative": ["The ink has bled, but a name is still legible."],
+      "text": ["The ink has bled, but a name is still legible."],
       "choices": [
         { "id": "close-journal", "text": "Close the journal.", "next": "ending" }
       ]
@@ -25,7 +25,7 @@
     "ending": {
       "id": "ending",
       "title": "Water-Stained Journal",
-      "narrative": ["You step away from the journal."],
+      "text": ["You step away from the journal."],
       "choices": [{ "id": "end", "text": "END" }]
     }
   }

@@ -7,7 +7,7 @@ import { usePlayer } from '../../PlayerContext'
 import './Hud.css'
 
 function Hud() {
-  const { currentPassage } = usePlayer()
+  const { currentDialogue } = usePlayer()
 
   return (
     <div className="hud">
@@ -16,7 +16,7 @@ function Hud() {
         <SidePanel />
         <ClarityMeter label="Clarity" value={44} />
         <Health />
-        {currentPassage && <DialoguePanel passage={currentPassage} />}
+        {currentDialogue && <DialoguePanel dialogue={currentDialogue} />}
       </div>
     </div>
   )

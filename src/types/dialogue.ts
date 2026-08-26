@@ -7,9 +7,9 @@ export interface DialogueChoice {
   next?: string
 }
 
-export interface DialoguePassage {
+export interface Dialogue {
   id: string
   title: string
-  narrative: string[]
+  text: string[]
   choices: DialogueChoice[]
 }

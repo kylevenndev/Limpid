@@ -1,13 +1,13 @@
 {
   "id": "mirror",
   "name": "Cracked Mirror",
-  "startPassageId": "start",
+  "startDialogueId": "start",
   "position": { "top": "30%", "left": "50%" },
-  "passages": {
+  "dialogue": {
     "start": {
       "id": "start",
       "title": "Cracked Mirror",
-      "narrative": ["The glass is fogged at the edges. Your reflection is a beat too slow."],
+      "text": ["The glass is fogged at the edges. Your reflection is a beat too slow."],
       "choices": [
         { "id": "wipe-fog", "text": "Wipe the fog away.", "next": "wipe", "difficulty": 15 },
         { "id": "look-closer", "text": "Look closer.", "next": "ending" },
@@ -17,7 +17,7 @@
     "wipe": {
       "id": "wipe",
       "title": "Cracked Mirror",
-      "narrative": ["For a moment, the reflection doesn't match your movement."],
+      "text": ["For a moment, the reflection doesn't match your movement."],
       "choices": [
         { "id": "turn-away", "text": "Turn away.", "next": "ending" }
       ]
@@ -25,7 +25,7 @@
     "ending": {
       "id": "ending",
       "title": "Cracked Mirror",
-      "narrative": ["You step away from the mirror."],
+      "text": ["You step away from the mirror."],
       "choices": [{ "id": "end", "text": "END" }]
     }
   }

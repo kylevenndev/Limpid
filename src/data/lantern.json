@@ -1,13 +1,13 @@
 {
   "id": "lantern",
   "name": "Broken Lantern",
-  "startPassageId": "start",
+  "startDialogueId": "start",
   "position": { "top": "22%", "left": "80%" },
-  "passages": {
+  "dialogue": {
     "start": {
       "id": "start",
       "title": "Broken Lantern",
-      "narrative": ["The glass is shattered, but the wick still smells faintly of oil."],
+      "text": ["The glass is shattered, but the wick still smells faintly of oil."],
       "choices": [
         { "id": "light-it", "text": "Try to light it.", "next": "light", "difficulty": 15 },
         { "id": "leave-dark", "text": "Leave it dark.", "next": "ending" },
@@ -17,7 +17,7 @@
     "light": {
       "id": "light",
       "title": "Broken Lantern",
-      "narrative": ["It catches for a second, then gutters out."],
+      "text": ["It catches for a second, then gutters out."],
       "choices": [
         { "id": "set-down", "text": "Set it back down.", "next": "ending" }
       ]
@@ -25,7 +25,7 @@
     "ending": {
       "id": "ending",
       "title": "Broken Lantern",
-      "narrative": ["You step away from the lantern."],
+      "text": ["You step away from the lantern."],
       "choices": [{ "id": "end", "text": "END" }]
     }
   }

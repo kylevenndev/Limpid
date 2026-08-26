@@ -8,14 +8,14 @@ import './Scene.css'
 const INTERACTION_RADIUS = 15 // percent-units the player must be within to interact
 
 function Scene() {
-  const { currentPassage, position, openInteractable } = usePlayer()
+  const { currentDialogue, position, openInteractable } = usePlayer()
 
   return (
     <>
       <SceneBackground />
       <div className="scene-overlay">
-        {!currentPassage && <Player />}
-        {!currentPassage &&
+        {!currentDialogue && <Player />}
+        {!currentDialogue &&
           interactables.map((interactable) => {
             const interactablePosition = {
               x: parsePercent(interactable.position.left),

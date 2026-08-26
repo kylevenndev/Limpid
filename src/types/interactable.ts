@@ -1,9 +1,9 @@
-import type { DialoguePassage } from './dialogue'
+import type { Dialogue } from './dialogue'
 
 export interface Interactable {
   id: string
   name: string
-  passages: Record<string, DialoguePassage>
-  startPassageId: string
+  dialogue: Record<string, Dialogue>
+  startDialogueId: string
   position: { top: string; left: string }
 }

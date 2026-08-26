@@ -1,13 +1,13 @@
 {
   "id": "old-trunk",
   "name": "Old Trunk",
-  "startPassageId": "start",
+  "startDialogueId": "start",
   "position": { "top": "55%", "left": "85%" },
-  "passages": {
+  "dialogue": {
     "start": {
       "id": "start",
       "title": "Old Trunk",
-      "narrative": ["The latch is rusted shut. Something inside shifts when you nudge it."],
+      "text": ["The latch is rusted shut. Something inside shifts when you nudge it."],
       "choices": [
         { "id": "force-latch", "text": "Force the latch open.", "next": "open", "difficulty": 15 },
         { "id": "leave-locked", "text": "Leave it locked.", "next": "ending" },
@@ -17,7 +17,7 @@
     "open": {
       "id": "open",
       "title": "Old Trunk",
-      "narrative": ["The lid gives way. Dust, cloth, and something metal underneath."],
+      "text": ["The lid gives way. Dust, cloth, and something metal underneath."],
       "choices": [
         { "id": "close-trunk", "text": "Close the trunk.", "next": "ending" }
       ]
@@ -25,7 +25,7 @@
     "ending": {
       "id": "ending",
       "title": "Old Trunk",
-      "narrative": ["You step away from the trunk."],
+      "text": ["You step away from the trunk."],
       "choices": [{ "id": "end", "text": "END" }]
     }
   }

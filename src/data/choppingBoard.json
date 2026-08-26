@@ -1,13 +1,13 @@
 {
   "id": "chopping-board",
   "name": "Chopping Board",
-  "startPassageId": "start",
+  "startDialogueId": "start",
   "position": { "top": "65%", "left": "20%" },
-  "passages": {
+  "dialogue": {
     "start": {
       "id": "start",
       "title": "Chopping Board",
-      "narrative": ["A worn wooden board, knife marks scarred deep into its surface."],
+      "text": ["A worn wooden board, knife marks scarred deep into its surface."],
       "choices": [
         { "id": "pick-knife", "text": "Pick up the knife.", "next": "knife", "difficulty": 15 },
         { "id": "put-back", "text": "Put the board back.", "next": "ending" },
@@ -17,7 +17,7 @@
     "knife": {
       "id": "knife",
       "title": "Chopping Board",
-      "narrative": ["The knife is heavier than it looks. The blade catches the light."],
+      "text": ["The knife is heavier than it looks. The blade catches the light."],
       "choices": [
         { "id": "put-down", "text": "Put it back down.", "next": "ending" }
       ]
@@ -25,7 +25,7 @@
     "ending": {
       "id": "ending",
       "title": "Chopping Board",
-      "narrative": ["You step away from the board."],
+      "text": ["You step away from the board."],
       "choices": [{ "id": "end", "text": "END" }]
     }
   }
