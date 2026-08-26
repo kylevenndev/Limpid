@@ -4,9 +4,20 @@ import { moveToward } from '../utils/position'
 
 const SPEED = 30 // how many percent-units of the scene the player crosses per second
 
+const STORAGE_KEY = 'limpid:position'
+
+function loadPosition(): Position {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY)
+    return raw ? JSON.parse(raw) : { x: 50, y: 70 }
+  } catch {
+    return { x: 50, y: 70 }
+  }
+}
+
 export function usePlayerPosition() {
   // `position` is the only value that should trigger a re-render — it's what Player.tsx draws.
-  const [position, setPosition] = useState<Position>({ x: 50, y: 70 })
+  const [position, setPosition] = useState<Position>(loadPosition)
 
   // Everything below is a ref, not state — the loop reads/writes these every single
   // frame (~60x/sec), and none of them should cause a re-render on their own.
@@ -78,6 +89,10 @@ export function usePlayerPosition() {
       }
     }
   }, [])
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(position))
+  }, [position])
 
   return { position, moveTo }
 }
