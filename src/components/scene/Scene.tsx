@@ -1,6 +1,7 @@
 import SceneBackground from './SceneBackground'
 import Player from './Player'
 import { usePlayer } from '../../PlayerContext'
+import { usePosition } from '../../PositionContext'
 import { interactables } from '../../data/interactables'
 import { isNear, parsePercent } from '../../utils/position'
 import './Scene.css'
@@ -8,7 +9,8 @@ import './Scene.css'
 const INTERACTION_RADIUS = 15 // percent-units the player must be within to interact
 
 function Scene() {
-  const { currentDialogue, position, openInteractable } = usePlayer()
+  const { currentDialogue, openInteractable } = usePlayer()
+  const { position } = usePosition()
 
   return (
     <>

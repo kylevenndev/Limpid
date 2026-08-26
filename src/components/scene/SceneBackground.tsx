@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import './SceneBackground.css'
 import { usePlayer } from '../../PlayerContext'
+import { usePosition } from '../../PositionContext'
 
 interface SceneBackgroundProps {
   src?: string
@@ -12,7 +13,8 @@ function SceneBackground({
   alt = 'Isometric apartment interior',
 }: SceneBackgroundProps) {
   const sceneRef = useRef<HTMLDivElement>(null)
-  const { moveTo, currentDialogue } = usePlayer()
+  const { currentDialogue } = usePlayer()
+  const { moveTo } = usePosition()
 
   const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
     const rect = sceneRef.current?.getBoundingClientRect()

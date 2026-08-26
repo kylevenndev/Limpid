@@ -1,8 +1,8 @@
-import { usePlayer } from '../../PlayerContext'
+import { usePosition } from '../../PositionContext'
 import './Player.css'
 
 function Player() {
-  const { position } = usePlayer()
+  const { position } = usePosition()
 
   return (
     <div
