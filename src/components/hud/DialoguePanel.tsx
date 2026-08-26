@@ -1,26 +1,29 @@
-import type { Dialogue } from '../../types/dialogue'
 import { resolveDifficultyCheck } from '../../utils/dice'
 import { usePlayer } from '../../PlayerContext'
+
 import './DialoguePanel.css'
 
-function DialoguePanel({ dialogue }: { dialogue: Dialogue }) {
-  const { health, selectChoice, isChoiceVisited } = usePlayer()
+function DialoguePanel() {
+  const { health, currentDialogue, selectChoice, isChoiceVisited } = usePlayer()
+
+  if (!currentDialogue) return
+
   return (
     <div className="hud-panel">
-      <div className="hud-panel__title">{dialogue.title}</div>
-      {dialogue.text.map((paragraph, i) => (
+      <div className="hud-panel__title">{currentDialogue.title}</div>
+      {currentDialogue.text.map((paragraph, i) => (
         <p key={i} className="hud-panel__text">
           {paragraph}
         </p>
       ))}
       <div className="hud-panel__spacer" />
-      {dialogue.choices.length > 0 && (
+      {currentDialogue.choices.length > 0 && (
         <div className="hud-panel__choices">
-          {dialogue.choices.map((choice) => (
+          {currentDialogue.choices.map((choice) => (
             <button
               type="button"
               key={choice.id}
-              className={`hud-panel__choice${choice.locked ? ' hud-panel__choice--locked' : ''}${isChoiceVisited(dialogue.id, choice.id) ? ' hud-panel__choice--visited' : ''}`}
+              className={`hud-panel__choice${choice.locked ? ' hud-panel__choice--locked' : ''}${isChoiceVisited(currentDialogue.id, choice.id) ? ' hud-panel__choice--visited' : ''}`}
               onClick={() => {
                 if (choice.difficulty !== undefined) {
                   const result = resolveDifficultyCheck(choice.difficulty)
