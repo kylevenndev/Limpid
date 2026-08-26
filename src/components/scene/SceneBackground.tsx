@@ -12,7 +12,7 @@ function SceneBackground({
   alt = 'Isometric apartment interior',
 }: SceneBackgroundProps) {
   const sceneRef = useRef<HTMLDivElement>(null)
-  const { moveTo } = usePlayer()
+  const { moveTo, currentDialogue } = usePlayer()
 
   const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
     const rect = sceneRef.current?.getBoundingClientRect()
@@ -20,7 +20,9 @@ function SceneBackground({
 
     const x = ((event.clientX - rect.left) / rect.width) * 100
     const y = ((event.clientY - rect.top) / rect.height) * 100
-    moveTo({ x, y })
+    if (!currentDialogue) {
+      moveTo({ x, y })
+    }
   }
 
   return (
