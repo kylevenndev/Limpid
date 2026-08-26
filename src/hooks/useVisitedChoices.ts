@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const STORAGE_KEY = 'limpid:visitedChoices'
 
@@ -19,11 +19,11 @@ export function useVisitedChoices() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify([...visitedChoices]))
   }, [visitedChoices])
 
-  const markVisited = useCallback((key: string) => {
+  const markVisited = (key: string) => {
     setVisitedChoices((prev) => (prev.has(key) ? prev : new Set(prev).add(key)))
-  }, [])
+  }
 
-  const isVisited = useCallback((key: string) => visitedChoices.has(key), [visitedChoices])
+  const isVisited = (key: string) => visitedChoices.has(key)
 
   return { markVisited, isVisited }
 }

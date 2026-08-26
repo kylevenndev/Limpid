@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useCallback, type ReactNode } from 'react'
+import { createContext, useContext, useState, type ReactNode } from 'react'
 import { useHealth } from './hooks/useHealth'
 import { useVisitedChoices } from './hooks/useVisitedChoices'
 import type { Interactable } from './types/interactable'
@@ -20,31 +20,25 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
   const [activeInteractable, setActiveInteractable] = useState<Interactable | null>(null)
   const [currentDialogueId, setCurrentDialogueId] = useState<string | null>(null)
 
-  const openInteractable = useCallback((interactable: Interactable) => {
+  const openInteractable = (interactable: Interactable) => {
     setActiveInteractable(interactable)
     setCurrentDialogueId(interactable.startDialogueId)
-  }, [])
+  }
 
-  const selectChoice = useCallback(
-    (choice: DialogueChoice) => {
-      if (activeInteractable && currentDialogueId) {
-        markVisited(`${activeInteractable.id}:${currentDialogueId}:${choice.id}`)
-      }
-      if (choice.next === undefined) {
-        setActiveInteractable(null)
-        setCurrentDialogueId(null)
-        return
-      }
-      setCurrentDialogueId(choice.next)
-    },
-    [activeInteractable, currentDialogueId, markVisited],
-  )
+  const selectChoice = (choice: DialogueChoice) => {
+    if (activeInteractable && currentDialogueId) {
+      markVisited(`${activeInteractable.id}:${currentDialogueId}:${choice.id}`)
+    }
+    if (choice.next === undefined) {
+      setActiveInteractable(null)
+      setCurrentDialogueId(null)
+      return
+    }
+    setCurrentDialogueId(choice.next)
+  }
 
-  const isChoiceVisited = useCallback(
-    (dialogueId: string, choiceId: string) =>
-      activeInteractable ? isVisited(`${activeInteractable.id}:${dialogueId}:${choiceId}`) : false,
-    [activeInteractable, isVisited],
-  )
+  const isChoiceVisited = (dialogueId: string, choiceId: string) =>
+    activeInteractable ? isVisited(`${activeInteractable.id}:${dialogueId}:${choiceId}`) : false
 
   const currentDialogue =
     activeInteractable && currentDialogueId ? activeInteractable.dialogue[currentDialogueId] : null
