@@ -1,7 +1,7 @@
 import SceneBackground from './SceneBackground'
 import Player from './Player'
 import { usePlayer } from '../../PlayerContext'
-import { usePosition } from '../../PositionContext'
+import { usePlayerPosition } from '../../hooks/usePlayerPosition'
 import { interactables } from '../../data/interactables'
 import { isNear, parsePercent } from '../../utils/position'
 import './Scene.css'
@@ -10,13 +10,13 @@ const INTERACTION_RADIUS = 15 // percent-units the player must be within to inte
 
 function Scene() {
   const { currentDialogue, openInteractable } = usePlayer()
-  const { position } = usePosition()
+  const { position, moveTo } = usePlayerPosition()
 
   return (
     <>
-      <SceneBackground />
+      <SceneBackground moveTo={moveTo} />
       <div className="scene-overlay">
-        {!currentDialogue && <Player />}
+        {!currentDialogue && <Player position={position} />}
         {!currentDialogue &&
           interactables.map((interactable) => {
             const interactablePosition = {

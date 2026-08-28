@@ -1,9 +1,7 @@
-import { usePosition } from '../../PositionContext'
+import type { Position } from '../../types/player'
 import './Player.css'
 
-function Player() {
-  const { position } = usePosition()
-
+function Player({ position }: { position: Position }) {
   return (
     <div
       className="scene-player"
