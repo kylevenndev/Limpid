@@ -6,7 +6,9 @@ import { interactables } from '../../data/interactables'
 import { isNear, parsePercent } from '../../utils/position'
 import './Scene.css'
 
-const INTERACTION_RADIUS = 15 // percent-units the player must be within to interact
+// Radius, as a percentage of the scene's width/height, the player must be
+// within to interact. E.g. if the scene is 1000px wide, 15 ≈ 150px away.
+const INTERACTION_RADIUS = 15
 
 function Scene() {
   const { currentDialogue, openInteractable } = usePlayer()

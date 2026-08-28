@@ -12,19 +12,16 @@ export function parsePercent(value: string): number {
   return parseFloat(value)
 }
 
-// Moves `current` toward `target`, but never further than `maxDistance`.
-// If `target` is already within `maxDistance`, snaps exactly onto it (arrival).
-export function moveToward(current: Position, target: Position, maxDistance: number): Position {
-  const dist = distance(current, target)
+export function stepToward(current: Position, target: Position, maxDistanceThisFrame: number): Position {
+  const distanceToTarget = distance(current, target)
 
-  // Already close enough to reach target in one step — snap to it exactly.
-  if (dist <= maxDistance) return target
+  // Snap to target
+  if (distanceToTarget <= maxDistanceThisFrame) return target
 
-  // Not close enough yet — move partway there.
   // `fractionToMove` is a ratio (0-1), NOT a distance and NOT a time value:
   // it's "what portion of the remaining gap do we close this step."
-  // e.g. if target is 30 units away and maxDistance is 0.5, fractionToMove ≈ 0.017 (1.7%).
-  const fractionToMove = maxDistance / dist
+  // e.g. if target is 30 units away and maxDistanceThisFrame is 0.5, fractionToMove ≈ 0.017 (1.7%).
+  const fractionToMove = maxDistanceThisFrame / distanceToTarget
 
   return {
     x: current.x + (target.x - current.x) * fractionToMove,
